@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Olivtvål apelsin-Kanel",
+    "description": "Handgjord tvål med ekologiska oljor, ekologiska eteriska oljor och naturliga färgämnen. Vikt 120g.",
+    "image": "http://localhost:3000/data/img/apelsin-kanel.jpg",
+    "price": 139,
+    "inventory": 0,
+    "quantity": 0
+  },
+  {
+    "title": "Citrongräs",
+    "description": "Handgjord tvål med ekologiska oljor, ekologiska eteriska oljor och naturliga färgämnen. Vikt 120g.",
+    "image": "http://localhost:3000/data/img/citrongräss.jpg",
+    "price": 139,
+    "inventory": 0,
+    "quantity": 0
+  },
+  {
+    "title": "Tvål med aloe vera",
+    "description": "Idealisk för glänsande och starkt hår. Tvålen ger även en känsla av fräschör och mjukhet till huden. Hjälper till att återfukta huden och bibehålla fukten. ",
+    "image": "http://localhost:3000/data/img/aloe-vera.jpg",
+    "price": 125,
+    "inventory": 1,
+    "quantity": 0
+  },
+  {
+    "title": "Tvål med kokos",
+    "description": "Handgjord tvål med en fantastisk doft av kokos. Tvålen har en vårdande och återfuktande verkan på din hud. ",
+    "image": "http://localhost:3000/data/img/kokos.jpg",
+    "price": 89,
+    "inventory": 64,
+    "quantity": 0
+  },
+  {
+    "title": "Tvål med Ringblomma/Calendula",
+    "description": "Lugnar och vitaliserar huden. Den är indicerat för hudveck och hudbristningar. För ansikte och kropp!",
+    "image": "http://localhost:3000/data/img/ringblomma.jpg",
+    "price": 119,
+    "inventory": 20,
+    "quantity": 0
+  },
+  {
+    "title": "EXTRAVAGANT-citrus och gurkmeja",
+    "description": "Tvål med citrusfrukter och gurkmeja för ansikte och kropp, idealisk för normal till fet hud.",
+    "image": "http://localhost:3000/data/img/extra-vagant.jpg",
+    "price": 129,
+    "inventory": 14,
+    "quantity": 0
+  }
+]

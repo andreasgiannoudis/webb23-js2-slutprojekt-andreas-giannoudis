@@ -1,0 +1,28 @@
+.sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  margin-right: 50px;
+}
+
+.sort-select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 2px solid rgb(120, 163, 130);
+  border-radius: 6px;
+  background-color: #fff;
+  color: rgb(120, 163, 130);
+    
+  transition: border-color 0.3s ease;
+}
+
+.sort-select:hover {
+  border-color: rgb(75, 109, 83);
+}
+
+.sort-select option {
+  padding: 12px 16px;
+  background-color: #fff;
+  color: #333;
+}
