@@ -20,7 +20,7 @@
     "description": "Idealisk för glänsande och starkt hår. Tvålen ger även en känsla av fräschör och mjukhet till huden. Hjälper till att återfukta huden och bibehålla fukten. ",
     "image": "http://localhost:3000/data/img/aloe-vera.jpg",
     "price": 125,
-    "inventory": 1,
+    "inventory": 0,
     "quantity": 0
   },
   {
@@ -28,7 +28,7 @@
     "description": "Handgjord tvål med en fantastisk doft av kokos. Tvålen har en vårdande och återfuktande verkan på din hud. ",
     "image": "http://localhost:3000/data/img/kokos.jpg",
     "price": 89,
-    "inventory": 64,
+    "inventory": 63,
     "quantity": 0
   },
   {
@@ -36,7 +36,7 @@
     "description": "Lugnar och vitaliserar huden. Den är indicerat för hudveck och hudbristningar. För ansikte och kropp!",
     "image": "http://localhost:3000/data/img/ringblomma.jpg",
     "price": 119,
-    "inventory": 20,
+    "inventory": 19,
     "quantity": 0
   },
   {
@@ -44,7 +44,7 @@
     "description": "Tvål med citrusfrukter och gurkmeja för ansikte och kropp, idealisk för normal till fet hud.",
     "image": "http://localhost:3000/data/img/extra-vagant.jpg",
     "price": 129,
-    "inventory": 14,
+    "inventory": 12,
     "quantity": 0
   }
 ]

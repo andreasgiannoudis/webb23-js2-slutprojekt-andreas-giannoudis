@@ -20,7 +20,7 @@ export default function SortProductsByPrice({
       } else {
         sortedProcucts = [...products];
       }
-    setProducts(sortedProcucts);
+    setProducts(sortedProcucts); //set the products in sorted order
   }
 
   return (
@@ -28,8 +28,8 @@ export default function SortProductsByPrice({
       <span>Sortera efter: </span>
       <select className="sort-select" onChange={handleSortChange}>
         <option value="">Select</option>
-        <option value="stigande">Stigande pris</option>
         <option value="fallande">Fallande pris</option>
+        <option value="stigande">Stigande pris</option>
         <option value="title">Titel</option>
       </select>
     </div>

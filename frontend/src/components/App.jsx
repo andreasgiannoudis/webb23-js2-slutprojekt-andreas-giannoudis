@@ -14,7 +14,7 @@ export default function App() {
   const [shoppingCartList, setShoppingCartList] = useState([]);
   const [statusPurchase, setStatusPurchase] = useState("");
   const [searchWord, setSearchWord] = useState('');
-  let tempSort; //for setting the temporary sort value
+  let tempSort; //used for setting the temporary sort value
 
   function addToCart(title, image, price) {
     const existingProductInCart = shoppingCartList.find(
@@ -48,16 +48,17 @@ export default function App() {
     setCartVisibility(false);
   }
 
+  async function fetchAndSetProducts(setProducts, searchWord) {
+    try {
+      const productsData = await getAllProducts(searchWord);
+      setProducts(productsData);
+    } catch (error) {
+      console.error("Error fetching products:", error.message);
+    }
+  }
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const productsData = await getAllProducts(searchWord);
-        setProducts(productsData);
-      } catch (error) {
-        console.error("Error fetching products:", error.message);
-      }
-    };
-    fetchProducts();
+    fetchAndSetProducts(setProducts, searchWord);
   }, [searchWord]);
 
   return (
@@ -74,6 +75,9 @@ export default function App() {
           setStatusPurchase={setStatusPurchase}
           statusPurchase={statusPurchase}
           setCartVisibility={setCartVisibility}
+          fetchAndSetProducts={fetchAndSetProducts}
+          setProducts={setProducts}
+          searchWord={searchWord}
         />
       )}
       <Search setSearchWord={setSearchWord}/>

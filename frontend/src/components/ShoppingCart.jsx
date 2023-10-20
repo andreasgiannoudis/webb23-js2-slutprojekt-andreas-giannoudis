@@ -10,14 +10,19 @@ import { updateInventory } from "./BackEndServices";
 export default function ShoppingCart({
   shoppingCartList,
   onClose,
+  setProducts,
+  searchWord,
   setShoppingCartList,
   setStatusPurchase,
   statusPurchase,
   setCartVisibility,
+  fetchAndSetProducts,
 }) {
   const recycleBin = new URL("../img/recycle-bin.png", import.meta.url);
   const payment = new URL("../img/payment.png", import.meta.url);
   let totalPrice = 0;
+  //calculate the total price of all the products added to the cart
+  //and return the totalPrice
   function calcTotalPrice() {
     let tempPrice = 0;
     shoppingCartList.map((product) => {
@@ -27,22 +32,34 @@ export default function ShoppingCart({
     return totalPrice;
   }
 
+  //a function to handle what will happen when the customer presses the pay button
+  //updates the inventory of each product that has been purchased
+  //displaying the success message (only if the cart has at least 1 product in it)
+  //resets the cart to 0
+  //removes the success message after 3 seconds
+  //and after 3.5 seconds the cart closes by setting the visibility to false
   function handleClickPay() {
     updateInventory(shoppingCartList);
-    if(shoppingCartList.length>0){
-      setStatusPurchase('success');
-    } 
+    if (shoppingCartList.length > 0) {
+      setStatusPurchase("success");
+    }
     setShoppingCartList([]);
     setTimeout(() => {
       setStatusPurchase("");
+      fetchAndSetProducts(setProducts, searchWord);
     }, 3000);
+    setTimeout(() => {
+      setCartVisibility(false);
+    }, 3500);
   }
 
+  //resets the shopping cart and closes the cart by setting the visibility to false
   function handleClickEmpty() {
     setShoppingCartList([]);
     setCartVisibility(false);
   }
 
+  //removes only one item in the cart
   function handleRemoveItem(title) {
     const updatedCart = shoppingCartList.filter(
       (product) => product.title !== title
@@ -86,7 +103,8 @@ export default function ShoppingCart({
         <a href="#" onClick={handleClickEmpty}>
           <img src={recycleBin} alt="remove" className="recycle-bin" />
         </a>
-        {statusPurchase === 'success' && <SuccessPurchase />}
+        {/* if the purchase status is set to success then the SuccessPurchase component displays */}
+        {statusPurchase === "success" && <SuccessPurchase />}
       </div>
     </div>
   );
