@@ -1,4 +1,5 @@
 import "../style/search.css";
+
 export default function Search({ setSearchWord }) {
   const searchIcon = new URL("../img/search-icon.png", import.meta.url);
   let tempWord = "";

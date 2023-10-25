@@ -29,7 +29,7 @@ export default function ProductCard({
   return (
     <>
       <div
-        className="product-card"
+        className={`product-card ${isHovered ? 'show-description' : ''}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
