@@ -37,14 +37,31 @@
   margin-bottom: 5px;
 }
 
-.add-to-cat-btn {
-  padding: 10px 20px;
+.add-to-cart-btn {
   background-color: rgb(120, 163, 130);
+  height: 35px;
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 1em;
+  transition: background-color 0.3s ease-in;
 }
+
+.add-to-cart-btn:hover {
+  background-color: rgb(90, 122, 97);
+}
+
+.added {
+  background-color: #4caf50;
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in, background-color 0.3s ease-in;
+}
+
+.disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
 
 .add-to-cat-btn.disabled {
   background-color: gray;
@@ -75,3 +92,4 @@
   font-weight: lighter;
   background-color: rgb(210, 210, 210);
 }
+

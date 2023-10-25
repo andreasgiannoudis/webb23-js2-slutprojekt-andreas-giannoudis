@@ -1,5 +1,7 @@
 //displaying the products as cards.
-//i will explain soon how the data will be displayed
+//for every product it shows the name, image, price, description(while hovering) and invetory
+//if the inventory is 0 then the Lägg i varukorg button is disabled and cant be clicked
+//otherwise the button works good and the user can add the product to the cart
 import "../style/product-card.css";
 import { useState } from "react";
 export default function ProductCard({
@@ -11,8 +13,18 @@ export default function ProductCard({
   addToCart,
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
   function handleClickAddToCart() {
-    inventory > 0 ? addToCart(title, image, price) : "";
+    if (inventory > 0) {
+      addToCart(title, image, price);
+      setIsAdded(true);
+
+      //reset the "Added to Cart" state after a delay
+      setTimeout(() => {
+        setIsAdded(false);
+      }, 1500);
+    }
+    
   }
   return (
     <>
@@ -25,6 +37,7 @@ export default function ProductCard({
         <img src={image} alt={title} />
         <p>Pris: {price}kr</p>
         <p>
+          {/* if the invemtory is 0 then it will show"slutsåld" otherwise it will show the number of items in the inventory */}
           {inventory === 0
             ? "Slutsåld :( "
             : `${inventory} i lager för leverans`}
@@ -32,9 +45,11 @@ export default function ProductCard({
         {isHovered && <p className="product-description">{description}</p>}
         <button
           onClick={handleClickAddToCart}
-          className={`add-to-cat-btn ${inventory === 0 ? "disabled" : ""}`}
+          className={`add-to-cart-btn ${inventory === 0 ? "disabled" : ""} ${
+            isAdded ? "added" : ""
+          }`}
         >
-          Lägg i varukorg
+          {isAdded ? "Tillagd i varukorg" : "Lägg i varukorg"}
         </button>
       </div>
     </>

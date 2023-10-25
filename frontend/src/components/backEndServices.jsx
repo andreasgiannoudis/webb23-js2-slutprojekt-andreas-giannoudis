@@ -9,6 +9,8 @@ export async function getAllProducts(searchWord){
     return data;
 }
 
+//connects with backend and does a PATCH request so the inventory
+//will be updated in products.json file
 export async function updateInventory(shoppingCartList){
     const apiUrl = `http://localhost:3000/products`;
     const purchase = {

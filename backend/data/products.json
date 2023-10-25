@@ -4,7 +4,7 @@
     "description": "Handgjord tvål med ekologiska oljor, ekologiska eteriska oljor och naturliga färgämnen. Vikt 120g.",
     "image": "http://localhost:3000/data/img/apelsin-kanel.jpg",
     "price": 139,
-    "inventory": 0,
+    "inventory": 1,
     "quantity": 0
   },
   {
