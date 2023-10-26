@@ -37,19 +37,19 @@ export default function ProductCard({
         <img src={image} alt={title} />
         <p>Pris: {price}kr</p>
         <p>
-          {/* if the invemtory is 0 then it will show"slutsåld" otherwise it will show the number of items in the inventory */}
+          {/* if the invemtory is 0 then it will show "slutsåld" otherwise it will show the number of items in the inventory */}
           {inventory === 0
-            ? "Slutsåld :( "
+            ? 'Slutsåld :( '
             : `${inventory} i lager för leverans`}
         </p>
         {isHovered && <p className="product-description">{description}</p>}
         <button
           onClick={handleClickAddToCart}
-          className={`add-to-cart-btn ${inventory === 0 ? "disabled" : ""} ${
-            isAdded ? "added" : ""
+          className={`add-to-cart-btn ${inventory === 0 ? 'disabled' : ''} ${
+            isAdded ? 'added' : ''
           }`}
         >
-          {isAdded ? "Tillagd i varukorg" : "Lägg i varukorg"}
+          {isAdded ? 'Tillagd i varukorg' : 'Lägg i varukorg'}
         </button>
       </div>
     </>

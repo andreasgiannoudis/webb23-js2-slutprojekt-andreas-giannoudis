@@ -1,5 +1,5 @@
 import "../style/main.css";
-
+//import of all components
 import Navbar from "./Navbar";
 import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
@@ -9,13 +9,17 @@ import Search from "./Search";
 import SortProductsByPrice from "./Sort";
 
 export default function App() {
-  const [products, setProducts] = useState([]);
-  const [isCartVisible, setCartVisibility] = useState(false);
-  const [shoppingCartList, setShoppingCartList] = useState([]);
-  const [statusPurchase, setStatusPurchase] = useState("");
-  const [searchWord, setSearchWord] = useState('');
+  const [products, setProducts] = useState([]); //array with all the products
+  const [isCartVisible, setCartVisibility] = useState(false); //to toggle the visibility of the cart
+  const [shoppingCartList, setShoppingCartList] = useState([]); //its the array where the products in cart are stored
+  const [statusPurchase, setStatusPurchase] = useState(""); // purchase status, success or failed
+  const [searchWord, setSearchWord] = useState(''); //the word that is used in search component
   let tempSort; //used for setting the temporary sort value
 
+  //add to cart function 
+  //it searches if the poduct that the user added is already in the cart 
+  //if it finds the same product based on the title then increases the quatity + 1
+  //if not it add the product to the shoppingCartList and sets the quantity to 1
   function addToCart(title, image, price) {
     const existingProductInCart = shoppingCartList.find(
       (product) => product.title === title
@@ -48,6 +52,7 @@ export default function App() {
     setCartVisibility(false);
   }
 
+  //async function for fetching the products. With or without the search word
   async function fetchAndSetProducts(setProducts, searchWord) {
     try {
       const productsData = await getAllProducts(searchWord);
@@ -63,10 +68,13 @@ export default function App() {
 
   return (
     <>
+    {/* navbar section */}
       <Navbar
         toggleCartVisibility={toggleCartVisibility}
         shoppingCartList={shoppingCartList}
       />
+
+      {/* shopping cart section */}
       {isCartVisible && (
         <ShoppingCart
           onClose={handleClickClose}
@@ -80,8 +88,11 @@ export default function App() {
           searchWord={searchWord}
         />
       )}
+      {/* search section */}
       <Search setSearchWord={setSearchWord}/>
+      {/* sort by section */}
       <SortProductsByPrice tempSort={tempSort} products={products} setProducts={setProducts} />
+      {/* productCard section */}
       <div className="product-container">
         {products.map((product) => (
           <ProductCard

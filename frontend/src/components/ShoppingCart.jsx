@@ -41,11 +41,11 @@ export default function ShoppingCart({
   function handleClickPay() {
     updateInventory(shoppingCartList);
     if (shoppingCartList.length > 0) {
-      setStatusPurchase("success");
+      setStatusPurchase('success');
     }
     setShoppingCartList([]);
     setTimeout(() => {
-      setStatusPurchase("");
+      setStatusPurchase('');
       fetchAndSetProducts(setProducts, searchWord);
     }, 3000);
     setTimeout(() => {
@@ -104,7 +104,7 @@ export default function ShoppingCart({
           <img src={recycleBin} alt="remove" className="recycle-bin" />
         </a>
         {/* if the purchase status is set to success then the SuccessPurchase component displays */}
-        {statusPurchase === "success" && <SuccessPurchase />}
+        {statusPurchase === 'success' && <SuccessPurchase />}
       </div>
     </div>
   );

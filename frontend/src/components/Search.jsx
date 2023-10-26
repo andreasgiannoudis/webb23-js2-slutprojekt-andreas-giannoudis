@@ -1,5 +1,7 @@
 import "../style/search.css";
-
+//search component
+//a form with an input
+//when submit the word that was typed is setting to setSearchWord state
 export default function Search({ setSearchWord }) {
   const searchIcon = new URL("../img/search-icon.png", import.meta.url);
   let tempWord = "";
@@ -15,7 +17,7 @@ export default function Search({ setSearchWord }) {
     <form onSubmit={handleSubmitSearch} className="search-form">
       <div className="search-container">
         <input
-          type="text"
+          type='text'
           placeholder="Sök en produkt..."
           onChange={handleChange}
           className="search-input"
