@@ -16,7 +16,7 @@ export default function ShoppingCart({
   setStatusPurchase,
   statusPurchase,
   setCartVisibility,
-  fetchAndSetProducts,
+  fetchAndSetProducts
 }) {
   const recycleBin = new URL("../img/recycle-bin.png", import.meta.url);
   const payment = new URL("../img/payment.png", import.meta.url);
@@ -47,10 +47,10 @@ export default function ShoppingCart({
     setTimeout(() => {
       setStatusPurchase('');
       fetchAndSetProducts(setProducts, searchWord);
-    }, 3000);
+    }, 2500);
     setTimeout(() => {
       setCartVisibility(false);
-    }, 3500);
+    }, 3000);
   }
 
   //resets the shopping cart and closes the cart by setting the visibility to false
@@ -85,6 +85,7 @@ export default function ShoppingCart({
                 <h3>
                   {item.title} X {item.quantity}
                 </h3>
+                {/* remove only one product at the time */}
                 <a href="#" onClick={() => handleRemoveItem(item.title)}>
                   <img src={recycleBin} alt="remove" className="recycle-bin" />
                 </a>
@@ -100,6 +101,7 @@ export default function ShoppingCart({
         <a href="#" onClick={handleClickPay}>
           <img src={payment} alt="payment" className="payment-icon" />
         </a>
+        {/* remove all the product list */}
         <a href="#" onClick={handleClickEmpty}>
           <img src={recycleBin} alt="remove" className="recycle-bin" />
         </a>

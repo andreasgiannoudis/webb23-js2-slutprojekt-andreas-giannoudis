@@ -19,7 +19,7 @@ export default function ProductCard({
       addToCart(title, image, price);
       setIsAdded(true);
 
-      //reset the "Added to Cart" state after a delay
+      //reset the "Added to Cart" state after a delay of 1.5 sec
       setTimeout(() => {
         setIsAdded(false);
       }, 1500);

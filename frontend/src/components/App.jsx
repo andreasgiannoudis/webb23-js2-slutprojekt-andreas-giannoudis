@@ -72,6 +72,9 @@ export default function App() {
       <Navbar
         toggleCartVisibility={toggleCartVisibility}
         shoppingCartList={shoppingCartList}
+        fetchAndSetProducts={fetchAndSetProducts}
+        setProducts={setProducts}
+        searchWord={searchWord}
       />
 
       {/* shopping cart section */}

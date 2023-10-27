@@ -1,7 +1,9 @@
 import '../style/nav.css';
-export default function Navbar({toggleCartVisibility, shoppingCartList}){
+//the whole navbar of the website
+export default function Navbar({toggleCartVisibility, shoppingCartList, fetchAndSetProducts,setProducts, searchWord}){
     const shoppingCart = new URL('../img/shopping-cart.png', import.meta.url);
-    const logo = new URL('../img/logo.png', import.meta.url)
+    const logo = new URL('../img/logo.png', import.meta.url);
+    //shows how many products have been added to the shopping cart
     function productsAddedInCart(){
         let totalQuantity = 0;
         shoppingCartList.map((product)=>{
@@ -9,13 +11,16 @@ export default function Navbar({toggleCartVisibility, shoppingCartList}){
         })
         return totalQuantity;
     }
-    
+    //function for fetching the products. I use it when i click the produkter in navbar
+    function handleFetchProducts() {
+        fetchAndSetProducts(setProducts, searchWord);
+    }
     return(
         <nav className="nav">
            <a href="#"><img src={logo} alt="logo" className="logo"/></a>
            <ul>
             <li>
-                <a href="#">Produkter</a>
+                <a href="#" onClick={handleFetchProducts}>Produkter</a>
             </li>
             <li>
                 <a href="#">Kontakt</a>

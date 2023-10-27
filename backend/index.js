@@ -56,10 +56,14 @@ app.patch("/products", (req, res) => {
   //find the product to update based on the title
   //when it is found update the inventory, inventory - quantity
   for (const cartProduct of productList) {
-    const { title, quantity } = cartProduct;
+    let { title, quantity } = cartProduct;
     const productToUpdate = products.find((product) => product.title === title);
     if (productToUpdate) {
-      productToUpdate.inventory -= quantity;
+      //checking the inventory and quantiry. if quantity is greater than inventory then the inventory goes to 0
+      if (quantity<=productToUpdate.inventory)
+        productToUpdate.inventory -= quantity;
+      else if(quantity>productToUpdate.inventory)
+        productToUpdate.inventory = 0;
     }
   }
   fs.writeFileSync("./data/products.json", JSON.stringify(products, null, 2)); //write in the file
