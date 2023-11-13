@@ -20,7 +20,7 @@
     "description": "Idealisk för glänsande och starkt hår. Tvålen ger även en känsla av fräschör och mjukhet till huden. Hjälper till att återfukta huden och bibehålla fukten. ",
     "image": "http://localhost:3000/data/img/aloe-vera.jpg",
     "price": 125,
-    "inventory": 0,
+    "inventory": 3,
     "quantity": 0
   },
   {

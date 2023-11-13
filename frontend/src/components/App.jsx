@@ -13,21 +13,27 @@ export default function App() {
   const [isCartVisible, setCartVisibility] = useState(false); //to toggle the visibility of the cart
   const [shoppingCartList, setShoppingCartList] = useState([]); //its the array where the products in cart are stored
   const [statusPurchase, setStatusPurchase] = useState(""); // purchase status, success or failed
-  const [searchWord, setSearchWord] = useState(''); //the word that is used in search component
+  const [searchWord, setSearchWord] = useState(""); //the word that is used in search component
   let tempSort; //used for setting the temporary sort value
 
-  //add to cart function 
-  //it searches if the poduct that the user added is already in the cart 
+  //add to cart function
+  //it searches if the poduct that the user added is already in the cart
   //if it finds the same product based on the title then increases the quatity + 1
   //if not it add the product to the shoppingCartList and sets the quantity to 1
-  function addToCart(title, image, price) {
+  function addToCart(title, image, price, inventory) {
     const existingProductInCart = shoppingCartList.find(
       (product) => product.title === title
     );
     if (existingProductInCart) {
       const updatedCart = shoppingCartList.map((product) =>
         product.title === title
-          ? { ...product, quantity: product.quantity + 1 }
+          ? {
+              ...product,
+              quantity:
+                product.quantity < inventory
+                  ? product.quantity + 1
+                  : product.quantity,
+            }
           : product
       );
       setShoppingCartList(updatedCart);
@@ -68,7 +74,7 @@ export default function App() {
 
   return (
     <>
-    {/* navbar section */}
+      {/* navbar section */}
       <Navbar
         toggleCartVisibility={toggleCartVisibility}
         shoppingCartList={shoppingCartList}
@@ -92,9 +98,13 @@ export default function App() {
         />
       )}
       {/* search section */}
-      <Search setSearchWord={setSearchWord}/>
+      <Search setSearchWord={setSearchWord} />
       {/* sort by section */}
-      <SortProductsByPrice tempSort={tempSort} products={products} setProducts={setProducts} />
+      <SortProductsByPrice
+        tempSort={tempSort}
+        products={products}
+        setProducts={setProducts}
+      />
       {/* productCard section */}
       <div className="product-container">
         {products.map((product) => (
@@ -106,6 +116,8 @@ export default function App() {
             description={product.description}
             inventory={product.inventory}
             addToCart={addToCart}
+            shoppingCartList={shoppingCartList}
+            setShoppingCartList={setShoppingCartList}
           />
         ))}
       </div>

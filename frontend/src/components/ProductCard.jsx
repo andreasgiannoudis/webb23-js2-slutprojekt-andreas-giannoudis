@@ -11,25 +11,52 @@ export default function ProductCard({
   description,
   inventory,
   addToCart,
+  shoppingCartList,
+  setShoppingCartList,
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  function handleClickAddToCart() {
-    if (inventory > 0) {
-      addToCart(title, image, price);
-      setIsAdded(true);
+  const [currentInventory, setCurrentInventory] = useState(inventory);
 
-      //reset the "Added to Cart" state after a delay of 1.5 sec
-      setTimeout(() => {
-        setIsAdded(false);
-      }, 1500);
+
+  //handles the add to cart
+  function handleClickAddToCart() {
+    if (currentInventory > 0) {
+      const existingProductInCart = shoppingCartList.find(
+        (product) => product.title === title
+      );
+      const totalQuantityInCart = existingProductInCart
+        ? existingProductInCart.quantity
+        : 0;
+
+      if (totalQuantityInCart < currentInventory) {
+        setShoppingCartList((prevCart) => {
+          if (existingProductInCart) {
+            return prevCart.map((product) =>
+              product.title === title
+                ? {
+                    ...product,
+                    quantity: product.quantity + 1,
+                  }
+                : product
+            );
+          } else {
+            return [...prevCart, { title, image, price, quantity: 1 }];
+          }
+        });
+
+        setIsAdded(true);
+        setTimeout(() => {
+          setIsAdded(false);
+        }, 1500);
+      }
     }
-    
   }
+
   return (
     <>
       <div
-        className={`product-card ${isHovered ? 'show-description' : ''}`}
+        className={`product-card ${isHovered ? "show-description" : ""}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -39,17 +66,17 @@ export default function ProductCard({
         <p>
           {/* if the invemtory is 0 then it will show "slutsåld" otherwise it will show the number of items in the inventory */}
           {inventory === 0
-            ? 'Slutsåld :( '
+            ? "Slutsåld :( "
             : `${inventory} i lager för leverans`}
         </p>
         {isHovered && <p className="product-description">{description}</p>}
         <button
           onClick={handleClickAddToCart}
-          className={`add-to-cart-btn ${inventory === 0 ? 'disabled' : ''} ${
-            isAdded ? 'added' : ''
+          className={`add-to-cart-btn ${inventory === 0 ? "disabled" : ""} ${
+            isAdded ? "added" : ""
           }`}
         >
-          {isAdded ? 'Tillagd i varukorg' : 'Lägg i varukorg'}
+          {isAdded ? "Tillagd i varukorg" : "Lägg i varukorg"}
         </button>
       </div>
     </>

@@ -24,13 +24,14 @@ export default function ShoppingCart({
   //calculate the total price of all the products added to the cart
   //and return the totalPrice
   function calcTotalPrice() {
-    let tempPrice = 0;
-    shoppingCartList.map((product) => {
-      tempPrice = product.price;
-      totalPrice += tempPrice;
+    let totalPrice = 0;
+    shoppingCartList.forEach((product) => {
+      const productPrice = product.price * product.quantity;
+      totalPrice += productPrice;
     });
     return totalPrice;
   }
+  
 
   //a function to handle what will happen when the customer presses the pay button
   //updates the inventory of each product that has been purchased
@@ -67,6 +68,14 @@ export default function ShoppingCart({
     setShoppingCartList(updatedCart);
   }
 
+  function calcTotalQuantity() {
+    let totalQuantity = 0;
+    shoppingCartList.forEach((product) => {
+      totalQuantity += product.quantity;
+    });
+    return totalQuantity;
+  }
+
   return (
     <div className="shopping-cart-side">
       <div className="shopping-cart-container">
@@ -75,7 +84,7 @@ export default function ShoppingCart({
         </button>
         <h2>Din varukorg</h2>
         <span>
-          Du har lagt {shoppingCartList.length} produkter i kundvagnen
+          Du har lagt {calcTotalQuantity()} produkter i kundvagnen
         </span>
         <div className="shopping-cart-products">
           {shoppingCartList.map((item) => (
